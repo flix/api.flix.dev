@@ -1,0 +1,83 @@
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 18vw;
+    max-width: 20rem;
+    height: 100vh;
+
+    box-shadow: 2px 0 2px 0 rgba(0, 0, 0, 0.15);
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    overflow-y: scroll;
+}
+
+.menu .logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #202020;
+}
+
+.menu .logo:hover {
+    cursor: pointer;
+}
+
+.menu .version {
+    margin-left: 0.5rem;
+    font-size: 0.85rem;
+    color: #8a8a8a;
+}
+
+.menu ul {
+    margin: 0;
+    margin-left: -0.5rem;
+    padding: 0;
+    list-style-type: none;
+}
+
+.menu ul li {
+    font-size: 0.95rem;
+    color: #000000;
+}
+
+.menu ul li a:link, .menu ul li a:visited {
+    color: #202020;
+    text-decoration: none;
+}
+
+.menu ul li a:hover, .menu ul li a:active {
+    color: #000000;
+    text-decoration: underline;
+}
+
+.menu .chevron {
+    font-size: 0.8rem;
+    color: #9f9f9f;
+    margin-right: 3px;
+    width: 12px;
+}
+
+.iconClass, .iconEnum, .iconTypeAlias, .iconDefn {
+    font-size: 0.75rem;
+    margin-left: 25px;
+    margin-right: 3px;
+    margin-bottom: 1px;
+    width: 12px;
+}
+
+.iconClass {
+    color: #FC9D9A;
+}
+
+.iconEnum {
+    color: #C8C8A9;
+}
+
+.iconTypeAlias {
+    color: #F9CDAD;
+}
+
+.iconDefn {
+    color: #83AF9B;
+}

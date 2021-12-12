@@ -1,0 +1,85 @@
+body {
+    background-color: #fcfcfc;
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    overflow-y: scroll;
+}
+
+h1, h2, h3 {
+    font-family: "Oswald", sans-serif;
+}
+
+hr {
+    margin-top: 0.35rem !important;
+    margin-bottom: 0.35rem !important;
+    border: none !important;
+    height: 1px !important;
+    color: #999 !important;
+}
+
+.box {
+    background-color: #ffffff;
+    border-radius: 0.2rem;
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.8rem;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.selected {
+    box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.3);
+}
+
+.line {
+    font-family: "Fira Code", monospace;
+    font-size: 0.85rem;
+}
+
+.keyword {
+    text-align: right;
+    padding-right: 0.5rem;
+    color: #333333;
+    font-weight: 500;
+}
+
+.name {
+    color: #B12250;
+    font-weight: 500;
+}
+
+.kind {
+    color: #8a8a8a;
+}
+
+.type {
+    color: #3061c4;
+}
+
+.effect {
+    color: #d4671e;
+}
+
+/* See https://stackoverflow.com/questions/1367409/how-to-make-button-look-like-a-link */
+button {
+    align-items: normal;
+    background-color: rgba(0, 0, 0, 0);
+    border-style: none;
+    box-sizing: content-box;
+    cursor: pointer;
+    display: inline;
+    font: inherit;
+    height: auto;
+    padding: 0;
+    perspective-origin: 0 0;
+    text-decoration: none;
+    text-align: start;
+    transform-origin: 0 0;
+    width: auto;
+    -moz-appearance: none;
+    -webkit-logical-height: 1em; /* Chrome ignores auto, so we have to use this hack to set the correct height  */
+    -webkit-logical-width: auto; /* Chrome ignores auto, but here for completeness */
+}
+
+button:hover {
+    text-decoration: underline;
+}

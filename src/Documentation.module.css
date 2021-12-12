@@ -1,0 +1,17 @@
+.documentation {
+    font-family: "Roboto", sans-serif;
+    font-size: 0.80rem;
+    color: #111111;
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+}
+
+.line {
+    margin-bottom: 0.15rem;
+}
+
+.code {
+    background-color: #efefef;
+    font-family: "Fira Code", monospace;
+    color: #111111;
+}
