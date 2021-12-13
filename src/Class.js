@@ -26,22 +26,26 @@ class Class extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            signatures: true,
+            sigs: true,
+            defs: false,
             instances: false
         }
     }
 
     toggleSignatures() {
-        this.setState({signatures: !this.state.signatures})
+        this.setState({sigs: !this.state.sigs})
     }
 
+    toggleDefinitions() {
+        this.setState({defs: !this.state.defs})
+    }
 
     toggleInstances() {
         this.setState({instances: !this.state.instances})
     }
 
     getSignatures() {
-        if (!this.state.signatures) {
+        if (!this.state.sigs) {
             return <div>
                 <h6>Signatures <button className="small link-primary"
                                        onClick={() => this.toggleSignatures()}>(show)</button>
@@ -53,7 +57,26 @@ class Class extends Component {
                                        onClick={() => this.toggleSignatures()}>(hide)</button>
                 </h6>
                 <div>
-                    {this.props.decl.signatures.map(sig => <Signature key={sig.sym.name} sig={sig}/>)}
+                    {this.props.decl.sigs.map(sig => <Signature key={sig.sym.name} sig={sig}/>)}
+                </div>
+            </div>
+        }
+    }
+
+    getDefinitions() {
+        if (!this.state.defs) {
+            return <div>
+                <h6>Definitions <button className="small link-primary"
+                                       onClick={() => this.toggleDefinitions()}>(show)</button>
+                </h6>
+            </div>
+        } else {
+            return <div>
+                <h6>Definitions <button className="small link-primary"
+                                       onClick={() => this.toggleDefinitions()}>(hide)</button>
+                </h6>
+                <div>
+                    {this.props.decl.defs.map(sig => <Signature key={sig.sym.name} sig={sig}/>)}
                 </div>
             </div>
         }
@@ -89,6 +112,8 @@ class Class extends Component {
             <SourceLocation loc={this.props.decl.loc}/>
             <hr/>
             {this.getSignatures()}
+            <hr/>
+            {this.getDefinitions()}
             <hr/>
             {this.getInstances()}
 
