@@ -64,19 +64,24 @@ class Class extends Component {
     }
 
     getDefinitions() {
+        let defs = this.props.decl.defs;
+        if (defs === undefined || defs.length === 0) {
+            return undefined
+        }
+
         if (!this.state.defs) {
             return <div>
                 <h6>Definitions <button className="small link-primary"
-                                       onClick={() => this.toggleDefinitions()}>(show)</button>
+                                        onClick={() => this.toggleDefinitions()}>(show)</button>
                 </h6>
             </div>
         } else {
             return <div>
                 <h6>Definitions <button className="small link-primary"
-                                       onClick={() => this.toggleDefinitions()}>(hide)</button>
+                                        onClick={() => this.toggleDefinitions()}>(hide)</button>
                 </h6>
                 <div>
-                    {this.props.decl.defs.map(sig => <Signature key={sig.sym.name} sig={sig}/>)}
+                    {defs.map(sig => <Signature key={sig.sym.name} sig={sig}/>)}
                 </div>
             </div>
         }
@@ -116,7 +121,6 @@ class Class extends Component {
             {this.getDefinitions()}
             <hr/>
             {this.getInstances()}
-
         </div>
     }
 }
