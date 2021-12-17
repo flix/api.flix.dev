@@ -56,6 +56,7 @@ class App extends Component {
         if (hash) {
             defaultNameSpace = hash.substr(1)
         }
+        document.title = defaultNameSpace
 
         // The initial state.
         this.state = {
@@ -72,6 +73,7 @@ class App extends Component {
         if(window.history.pushState) {
             window.history.pushState(null, null, '#' + namespace);
         }
+        document.title = namespace
     }
 
     getClasses() {
