@@ -20,6 +20,7 @@ import Instance from "./Instance";
 import TypeParam from "./TypeParam";
 import SourceLocation from "./SourceLocation";
 import Signature from "./Signature";
+import Documentation from "./Documentation";
 
 class Class extends Component {
 
@@ -115,6 +116,7 @@ class Class extends Component {
                 <span className="tparams">[<TypeParam tparam={this.props.decl.tparam}/>]</span>
             </span>
             <SourceLocation loc={this.props.decl.loc}/>
+            <Documentation doc={this.props.decl.doc}/>
             <hr/>
             {this.getSignatures()}
             <hr/>

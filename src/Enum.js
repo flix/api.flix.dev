@@ -18,6 +18,7 @@ import SourceLocation from "./SourceLocation";
 
 import {getClassNames, getFormattedTypeParams} from "./Utils";
 import Case from "./Case";
+import Documentation from "./Documentation";
 
 class Enum extends Component {
     render() {
@@ -33,6 +34,8 @@ class Enum extends Component {
             <div>
                 {this.props.decl.cases.map(caze => <Case key={caze.tag} caze={caze}/>)}
             </div>
+            <hr/>
+            <Documentation doc={this.props.decl.doc}/>
         </div>
     }
 }
