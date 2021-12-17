@@ -15,7 +15,7 @@
  */
 import React, {Component} from 'react';
 
-import {getClassNames} from "./Utils";
+import {getClassNames, getTypeConstraints} from "./Utils";
 import Instance from "./Instance";
 import TypeParam from "./TypeParam";
 import SourceLocation from "./SourceLocation";
@@ -114,6 +114,7 @@ class Class extends Component {
                 <span className="keyword">class</span>
                 <span className="name">{this.props.decl.sym.name}</span>
                 <span className="tparams">[<TypeParam tparam={this.props.decl.tparam}/>]</span>
+                {getTypeConstraints(this.props.decl.superClasses)}
             </span>
             <SourceLocation loc={this.props.decl.loc}/>
             <Documentation doc={this.props.decl.doc}/>
