@@ -18,16 +18,11 @@ import styles from './TypeConstraint.module.css'
 
 import React, {Component} from "react";
 
-class TypeConstraint extends Component {
+class Derives extends Component {
 
     render() {
-        return <span>
-            <span className={styles.name}>{this.props.tc.sym.name}</span>
-            <span>[</span>
-            <span className="type">{this.props.tc.tpe}</span>
-            <span>]</span>
-        </span>
+        return <span className={styles.name}>{this.props.derives.name}</span>
     }
 }
 
-export default TypeConstraint
+export default Derives
