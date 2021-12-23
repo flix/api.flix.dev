@@ -16,24 +16,12 @@
 import styles from './Documentation.module.css'
 
 import React, {Component} from "react";
-import reactStringReplace from 'react-string-replace'
+import ReactMarkdown from 'react-markdown'
 
 class Documentation extends Component {
-
-    getLines() {
-        return this.props.doc.map((line, index) =>
-            <div key={index} className={styles.line}>{this.getLine(line)}</div>)
-    }
-
-    getLine(line) {
-        return reactStringReplace(line, /`([^`]+)`/g, (txt, id) =>
-            <span key={id} className={styles.code}>{txt}</span>
-        );
-    }
-
     render() {
         return <div className={styles.documentation}>
-            {this.getLines()}
+            <ReactMarkdown>{this.props.doc.join("\n")}</ReactMarkdown>
         </div>
     }
 }
