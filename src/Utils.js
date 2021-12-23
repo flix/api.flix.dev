@@ -17,6 +17,7 @@ import React from "react";
 import TypeParam from "./TypeParam";
 import FormalParam from "./FormalParam";
 import TypeConstraint from "./TypeConstraint";
+import Derives from "./Derives";
 
 /**
  * Returns `defaultClass` with the selected class appended if this declaration was clicked.
@@ -74,6 +75,17 @@ export function getFormattedTypeAndEffect(tpe, eff) {
         <span className="spacer">{getEffectSpacer(eff)}</span>
         <span className="effect">{getFormattedEffect(eff)}</span>
     </span>
+}
+
+/**
+ * Returns the formatted derived classes.
+ */
+export function getDerivedClasses(derived) {
+    if (derived === undefined || derived.length === 0) {
+        return undefined
+    }
+    let result = intersperse(derived.map((derives, index) => <Derives key={index} derives={derives}/>), ", ")
+    return <span> <span className="keyword">with</span>{result}</span>
 }
 
 /**

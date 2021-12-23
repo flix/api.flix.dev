@@ -14,11 +14,12 @@
  * limitations under the License.
  */
 import React, {Component} from 'react';
-import SourceLocation from "./SourceLocation";
-
-import {getClassNames, getFormattedTypeParams} from "./Utils";
 import Case from "./Case";
 import Documentation from "./Documentation";
+
+import SourceLocation from "./SourceLocation";
+
+import {getClassNames, getFormattedTypeParams, getDerivedClasses} from "./Utils";
 
 class Enum extends Component {
     render() {
@@ -28,6 +29,7 @@ class Enum extends Component {
                 <span className="keyword">enum</span>
                 <span className="name">{this.props.decl.sym.name}</span>
                 <span>{getFormattedTypeParams(this.props.decl.tparams)}</span>
+                {getDerivedClasses(this.props.decl.derives)}
             </span>
             <SourceLocation loc={this.props.decl.loc}/>
             <hr/>
