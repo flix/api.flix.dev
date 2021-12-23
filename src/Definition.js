@@ -34,7 +34,7 @@ class Definition extends Component {
             return undefined
         }
         return <div>
-            {annotations.map(a => <Annotation annotation={a}/>)}
+            {annotations.map((a, index) => <Annotation key={index} annotation={a}/>)}
         </div>
     }
 
