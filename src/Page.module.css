@@ -1,7 +1,14 @@
-.page {
-    padding-top: 2vh;
-    padding-left: 4rem;
-    padding-right: 4rem;
+@media(min-width: 768px) {
+    .page {
+        padding-left: 4rem !important;
+        padding-right: 4rem !important;
 
-    margin-left: 18vw;
+        margin-left: 18vw;
+    }
+}
+
+.page {
+    padding-top: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
