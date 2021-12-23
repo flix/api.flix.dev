@@ -112,7 +112,7 @@ class Menu extends Component {
 
     render() {
         return (
-            <div className={styles.menu}>
+            <div className={styles.menu + " d-print-none"}>
                 <div>
                     <span onClick={() => this.notifyReset()} className={styles.logo}>flix</span>
                     <span className={styles.version}>{this.props.data.version}</span>

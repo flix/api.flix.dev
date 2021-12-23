@@ -1,16 +1,19 @@
-.menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 18vw;
-    max-width: 20rem;
-    height: 100vh;
+@media(min-width: 768px) {
+    .menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 18vw;
+        max-width: 20rem;
+        height: 100vh;
 
-    box-shadow: 2px 0 2px 0 rgba(0, 0, 0, 0.15);
+        overflow-y: scroll;
+    }
+}
+
+.menu {
     padding-left: 1rem;
     padding-right: 1rem;
-
-    overflow-y: scroll;
 }
 
 .menu .logo {
