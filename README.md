@@ -21,6 +21,5 @@ Then:
 
 ```
 npm ci 
-npm run build
-serve -s build
+npm start
 ```
