@@ -27,7 +27,8 @@ class Menu extends Component {
         super(props);
 
         this.state = {
-            selected: {}
+            selected: {},
+            filter: ""
         }
     }
 
@@ -44,49 +45,56 @@ class Menu extends Component {
         </li>
     }
 
-    getSelectedNamespace(namespace) {
-        let classes = this.props.data.classes[namespace] || [];
-        let enums = this.props.data.enums[namespace] || [];
-        let defs = this.props.data.defs[namespace] || [];
-        let typeAliases = this.props.data.typeAliases[namespace] || [];
+    matchesFilter(decl) {
+        return decl.sym.name.toLowerCase().includes(this.state.filter.toLowerCase());
+    }
 
-        return <li key={namespace}>
-            <button onClick={() => this.onClickMenu(namespace)}>
-                <FontAwesomeIcon icon={faChevronDown} className={styles.chevron}/>
-                {namespace}
-            </button>
-            <ul>
-                {classes.map(decl =>
-                    <li key={decl.sym.name}>
-                        <FontAwesomeIcon icon={faDotCircle} className={styles.iconClass}/>
-                        <button onClick={() => this.onClickSubMenu(namespace, decl)}>{decl.sym.name}</button>
-                    </li>
-                )}
-                {enums.map(decl =>
-                    <li key={decl.sym.name}>
-                        <FontAwesomeIcon icon={faDotCircle} className={styles.iconEnum}/>
-                        <button onClick={() => this.onClickSubMenu(namespace, decl)}>{decl.sym.name}</button>
-                    </li>
-                )}
-                {typeAliases.map(decl =>
-                    <li key={decl.sym.name}>
-                        <FontAwesomeIcon icon={faDotCircle} className={styles.iconTypeAlias}/>
-                        <button onClick={() => this.onClickSubMenu(namespace, decl)}>{decl.sym.name}</button>
-                    </li>
-                )}
-                {defs.map(decl =>
-                    <li key={decl.sym.name}>
-                        <FontAwesomeIcon icon={faDotCircle} className={styles.iconDefn}/>
-                        <button onClick={() => this.onClickSubMenu(namespace, decl)}>{decl.name}</button>
-                    </li>
-                )}
-            </ul>
-        </li>
+    getSelectedNamespace(namespace) {
+        let classes = (this.props.data.classes[namespace] || []).filter(decl => this.matchesFilter(decl));
+        let enums = (this.props.data.enums[namespace] || []).filter(decl => this.matchesFilter(decl));
+        let defs = (this.props.data.defs[namespace] || []).filter(decl => this.matchesFilter(decl));
+        let typeAliases = (this.props.data.typeAliases[namespace] || []).filter(decl => this.matchesFilter(decl));
+
+        if(classes.length + enums.length + defs.length + typeAliases.length > 0)
+            return <li key={namespace}>
+                <button onClick={() => this.onClickMenu(namespace)}>
+                    <FontAwesomeIcon icon={faChevronDown} className={styles.chevron}/>
+                    {namespace}
+                </button>
+                <ul>
+                    {classes.map(decl =>
+                        <li key={decl.sym.name}>
+                            <FontAwesomeIcon icon={faDotCircle} className={styles.iconClass}/>
+                            <button onClick={() => this.onClickSubMenu(namespace, decl)}>{decl.sym.name}</button>
+                        </li>
+                    )}
+                    {enums.map(decl =>
+                        <li key={decl.sym.name}>
+                            <FontAwesomeIcon icon={faDotCircle} className={styles.iconEnum}/>
+                            <button onClick={() => this.onClickSubMenu(namespace, decl)}>{decl.sym.name}</button>
+                        </li>
+                    )}
+                    {typeAliases.map(decl =>
+                        <li key={decl.sym.name}>
+                            <FontAwesomeIcon icon={faDotCircle} className={styles.iconTypeAlias}/>
+                            <button onClick={() => this.onClickSubMenu(namespace, decl)}>{decl.sym.name}</button>
+                        </li>
+                    )}
+                    {defs.map(decl =>
+                        <li key={decl.sym.name}>
+                            <FontAwesomeIcon icon={faDotCircle} className={styles.iconDefn}/>
+                            <button onClick={() => this.onClickSubMenu(namespace, decl)}>{decl.name}</button>
+                        </li>
+                    )}
+                </ul>
+            </li>
+        else
+            return null;
     }
 
     getMenuItems() {
         return this.props.namespaces.map(namespace =>
-            (this.isSelected(namespace)) ? this.getSelectedNamespace(namespace) : this.getNamespace(namespace)
+            (this.isSelected(namespace)) || this.state.filter.length > 0 ? this.getSelectedNamespace(namespace) : this.getNamespace(namespace)
         )
     }
 
@@ -116,6 +124,9 @@ class Menu extends Component {
                 <div>
                     <span onClick={() => this.notifyReset()} className={styles.logo}>flix</span>
                     <span className={styles.version}>{this.props.data.version}</span>
+                </div>
+                <div>
+                    <input onChange={e => this.setState({filter: e.target.value})} type="search" name="filter" placeholder="Filter" />
                 </div>
                 <ul>
                     {this.getMenuItems()}
