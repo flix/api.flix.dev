@@ -58,14 +58,14 @@ export function getFormattedTypeAndEffect(tpe, eff) {
         if (eff === "true")
             return <span/>
         else
-            return <span className="spacer"> &amp; </span>
+            return <span className="spacer"> \ </span>
     }
 
     function getFormattedEffect(eff) {
         if (eff === "true")
             return <span/>
         else if (eff === "false")
-            return <span className="effect">Impure</span>
+            return <span className="effect">IO</span>
         else
             return <span className="effect">{eff}</span>
     }
